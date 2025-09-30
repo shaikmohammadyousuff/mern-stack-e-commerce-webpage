@@ -7,13 +7,13 @@ export const Carousel = () =>{
      <div id="carouselExample" className="carousel slide">
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src="/src/assets/caro1.jpg" className="d-block w-100" height={'650px'} alt="..."/>
+      <img src={img} className="d-block w-100" height={'650px'} alt="..."/>
     </div>
     <div className="carousel-item">
-      <img src="/src/assets/caro2.jpg" className="d-block w-100" height={'650px'} alt="..."/>
+      <img src={img2} className="d-block w-100" height={'650px'} alt="..."/>
     </div>
     <div className="carousel-item">
-      <img src="/src/assets/caro3.jpg"  className="d-block w-100" height={'650px'} alt="..."/>
+      <img src={img3}  className="d-block w-100" height={'650px'} alt="..."/>
     </div>
   </div>
   <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
