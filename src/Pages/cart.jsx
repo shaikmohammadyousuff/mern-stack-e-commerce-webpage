@@ -25,9 +25,9 @@ console.log(cartData);
                 {
                     cartData.map(item =>(
                         
-                        <div className="col-4 " key={item.id}>
-                            <div className="card-body shadow">
-                        <div className="card h-100 shadow">
+                        <div className="col-4" key={item.id}>
+                            <div className="card-body shadow mx-4 w-100">
+                        <div className="card h-100 shadow ">
                             <h1>{item.title}</h1>
                             <img src={item.thumbnail} alt=""/>
                             <h2  >{item.price}</h2>
