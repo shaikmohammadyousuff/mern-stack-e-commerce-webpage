@@ -1,10 +1,10 @@
 import img from '../assets/caro1.jpg';
 import img2 from '../assets/caro2.jpg';
 import img3 from '../assets/caro3.jpg';
-export const Carousel = () =>{
-    return(
-        <>
-     <div id="carouselExample" className="carousel slide">
+export const Carousel = () => {
+  return (
+    <>
+       <div id="carouselExample" className="carousel slide">
   <div className="carousel-inner">
     <div className="carousel-item active">
       <img src={img} className="d-block w-100" height={'650px'} alt="..."/>
@@ -24,7 +24,8 @@ export const Carousel = () =>{
     <span className="carousel-control-next-icon" aria-hidden="true"></span>
     <span className="visually-hidden">Next</span>
   </button>
-</div>
-        </>
-    )
+</div> 
+     
+    </>
+  )
 }

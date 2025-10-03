@@ -1,55 +1,73 @@
- 
- 
-import Loader from "../components/Loader"
- 
-import { useDispatch, useSelector } from "react-redux"
-import { DEC, INC, REMOVE } from "../Features/Cart/cartSlice"
-import { useState } from "react"
-import { ProductDetails } from "../Features/products/Productdetail"
+import Loader from "../components/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { DEC, INC, REMOVE } from "../Features/Cart/cartSlice";
 
-export const Cart=()=>{
-        
-    let cartData = useSelector(state=>state.cart)
-let dispatch =useDispatch()
+export const Cart = () => {
+  let cartData = useSelector((state) => state.cart);
+  let dispatch = useDispatch();
 
-console.log(cartData);
-
-   return(
-    <>
+  return (
     <div className="container mt-5">
-        <div className=" container row gy-2">
-            <div className="row">
-        {
-            cartData.length>0 ?
-            <>
-                {
-                    cartData.map(item =>(
-                        
-                        <div className="col-4" key={item.id}>
-                            <div className="card-body shadow mx-4 w-100">
-                        <div className="card h-100 shadow ">
-                            <h1>{item.title}</h1>
-                            <img src={item.thumbnail} alt=""/>
-                            <h2  >{item.price}</h2>
-                            <button className="btn btn-warning mx-3" onClick={()=>dispatch(INC(item.id))}>+</button>
-                            
-                            <button className="btn-btn-btn-danger mx-3" onClick={()=>dispatch(DEC(item.id))}>-</button>
-                            <button className="btn-btn-btn-outline-danger mx-3" onClick={()=>REMOVE(ProductDetails)}>Remove</button>
-                        </div>
-                        </div>
-                        </div>
-                     
-                    ))
-                }        
-            </>
-            : <><center><Loader />...Loading</center></>
-        }
-    </div>
-    </div>
-    
-    
+      <h2 className="mb-4">Your Cart</h2>
+      <div className="row gy-3">
+        {cartData.length > 0 ? (
+          <>
+            {cartData.map((item) => (
+              <div
+                className="col-12 border rounded shadow-sm p-3 d-flex align-items-center"
+                key={item.id}
+              >
+                {/* Image */}
+                <div className="col-md-3 text-center">
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    className="img-fluid rounded"
+                    style={{ maxHeight: "150px", objectFit: "contain" }}
+                  />
+                </div>
 
+                {/* Details */}
+                <div className="col-md-9">
+                  <h5 className="fw-bold">{item.title}</h5>
+                  <p className="mb-1 text-muted">Price: ₹{item.price}</p>
+                  <p className="mb-2">Rating: ⭐ {item.rating}</p>
+
+                  {/* Quantity controls */}
+                  <div className="d-flex align-items-center mb-2">
+                    <button
+                      className="btn btn-sm btn-warning me-2"
+                      onClick={() => dispatch(INC(item.id))}
+                    >
+                      +
+                    </button>
+                    <span className="fw-bold">{item.qty || 1}</span>
+                    <button
+                      className="btn btn-sm btn-danger ms-2"
+                      onClick={() => dispatch(DEC(item.id))}
+                    >
+                      -
+                    </button>
+                  </div>
+
+                  {/* Remove button */}
+                  <button
+                    className="btn btn-outline-danger btn-sm"
+                    onClick={() => dispatch(REMOVE(item.id))}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className="text-center">
+            {/* <Loader /> */}
+            <h2 className="mt-2">Your cart is empty...</h2>
+          </div>
+        )}
+      </div>
     </div>
-        </>
-   )
-}
+  );
+};
